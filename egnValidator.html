@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>ЕГН Валидатор</title>
+</head>
+<body>
+    
+    <section>
+        <span id='backBut'>
+            <a href="index.html">Назад</a>
+        </span>
+        <h1>ЕГН Валидатор</h1>
+        <div id='input'>
+            <form>
+                <label>Въведете ЕГН:</label>
+                <input type="text" id="egn">
+            </form>
+            <button type="button" id="validateBut" onclick="validate()" class="bigBut">Валидирай</button>
+        </div>
+        <div id='output'>
+            <h2></h2> <!--- Валидно; невалидно егн --->
+            <span id='moreInfo'></span>
+        </div>
+    </section>
+    <section>
+        <div id='formation'>
+            <h6>Как се формира ЕГН?</h6>
+            <span>ЕГН се състой от 10 цифри, като всяка носи допълнителна информация.</span>
+            <ul>
+                <li>
+                    Първа и втора цифра -> година на раждане
+                </li>
+                <li>
+                    Трета и четвърта цифра -> месец на раждане
+                </li>
+                <li>
+                    Пета и шеста цифра -> дата на раждане
+                </li>
+                <li>
+                    Седма, осма и девета цифра -> цифров код на града, в който човекът е роден
+                </li>
+                <li>
+                    Десета цифра -> контролна цифра, изчисляна по формула от останалите цифри
+                </li>
+            </ul>
+        </div>
+    </section>
+    <script src="./egnVal.js"></script>
+</body>
+</html>

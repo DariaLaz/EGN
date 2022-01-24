@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+
+    <title>Генерирай ЕГН</title>
+</head>
+<body>
+    
+    <section>
+        <span id='backBut'>
+            <a href="index.html">Назад</a>
+        </span>
+        <h1>ЕГН Генератор</h1>
+        <span id='input'>
+            <form>
+                <div>
+                    <label>Година на раждане:</label>
+                    <input type="text" id="year">
+                </div>
+                <div>
+                    <label>Meceц на раждане:</label>
+                    <select id="month">
+                    <option value="1">Януари</option>
+                    <option value="2">Февруари</option>
+                    <option value="3">Март</option>
+                    <option value="4">Април</option>
+                    <option value="5">Май</option>
+                    <option value="6">Юни</option>
+                    <option value="7">Юли</option>
+                    <option value="8">Август</option>
+                    <option value="9">Септември</option>
+                    <option value="10">Октомври</option>
+                    <option value="11">Ноември</option>
+                    <option value="12">Декември</option>
+                    </select>
+                </div>
+                <div>
+                    <label>Дата на раждане:</label>
+                    <input type="text" id="date">
+                </div>
+                <div>
+                    <label>Област:</label>
+                    <select id="region">
+                        <option value = "Благоевград">Благоевград</option>
+                        <option value = "Бургас">Бургас</ option >
+                        <option value = "Варна">Варна</ option >
+                        <option value = "Велико Търново">Велико Търново</ option >
+                        <option value = "Видин">Видин</ option >
+                        <option value = "Враца">Враца</ option >
+                        <option value = "Габрово">Габрово</ option >
+                        <option value = "Кърджали">Кърджали</ option >
+                        <option value = "Кюстендил">Кюстендил</ option >
+                        <option value = "Ловеч">Ловеч</ option >
+                        <option value = "Монтана">Монтана</ option >
+                        <option value = "Пазарджик">Пазарджик</ option >
+                        <option value = "Перник">Перник</ option >
+                        <option value = "Плевен">Плевен</ option >
+                        <option value = "Пловдив">Пловдив</ option >
+                        <option value = "Разград">Разград</ option >
+                        <option value = "Русе">Русе</ option >
+                        <option value = "Силистра">Силистра</ option >
+                        <option value = "Сливен">Сливен</ option >
+                        <option value = "Смолян">Смолян</ option >
+                        <option value = "София - град">София - град</ option >
+                        <option value = "София - окръг">София - окръг</ option >
+                        <option value = "Стара Загора">Стара Загора</ option >
+                        <option value = "Добрич">Добрич</ option >
+                        <option value = "Търговище">Търговище</ option >
+                        <option value = "Хасково">Хасково</ option >
+                        <option value = "Шумен">Шумен</ option >
+                        <option value = "Ямбол">Ямбол</ option >
+                        <option value = "Друг/Неизвестен">Друг/Неизвестен</ option >
+                    </select>
+                </div>
+                <div>
+                    <label>Пол:</label>
+                    <select id="sex">
+                    <option value="male">Мъж</option>
+                    <option value="female">Жена</option>
+                    </select>
+                </div>
+            </form>
+            <button type="button" id="generateBut" onclick="generate()" class="bigBut">Генерирай</button>
+        </span>
+        <div id='output'>
+            <h2></h2> <!--- Валидно; невалидно егн --->
+            <div id='info'></div>
+            <div id='moreInfo'></div>
+        </div>
+    </section>
+    
+    <section>
+        <div id='formation'>
+            <h6>Как се формира ЕГН?</h6>
+            <span>ЕГН се състой от 10 цифри, като всяка носи допълнителна информация.</span>
+            <ul>
+                <li>
+                    Първа и втора цифра -> година на раждане
+                </li>
+                <li>
+                    Трета и четвърта цифра -> месец на раждане
+                </li>
+                <li>
+                    Пета и шеста цифра -> дата на раждане
+                </li>
+                <li>
+                    Седма, осма и девета цифра -> цифров код на града, в който човекът е роден
+                </li>
+                <li>
+                    Десета цифра -> контролна цифра, изчисляна по формула от останалите цифри
+                </li>
+            </ul>
+        </div>
+    </section>
+    <script src="./egnGen.js"></script>
+</body>
+</html>
