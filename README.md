@@ -1,1 +1,1 @@
-# EGN
+EGN Validator and Generator
