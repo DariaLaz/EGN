@@ -9,6 +9,11 @@ function generate(){
     let regNumTo;
     let oddOrEven;
 
+    if(year == '' || date == '' ){
+        document.querySelector('#output h2').textContent = `Всички полета трябва да бъдат попълнени!`;
+        document.querySelector('#result').textContent = ``;
+    }
+
     if(sex == 'male'){
         oddOrEven = 'нечетно';
     } else{
@@ -179,7 +184,7 @@ function generate(){
     
     document.querySelector('#output h2').textContent = egn;
     let info = `ABC -> ${oddOrEven} число в интервала [${padLeadZeros(regNumFrom, 3)}; ${padLeadZeros(regNumTo, 3)}]`;
-    let moreInfo = `D се изчислява по формулата: (${egn[0]}*2 + ${egn[2]}*4 + ${egn[3]}*8 + ${egn[4]}*5 + ${egn[5]}*10 + ${egn[6]}*9 + A*7 + B*3 + C*6) / 11`
+    let moreInfo = `D се изчислява по формулата: (${egn[0]}*2 + ${egn[1]}*4 + ${egn[2]}*8 + ${egn[3]}*5 + ${egn[4]}*10 + ${egn[5]}*9 + A*7 + B*3 + C*6) / 11`
 
     document.querySelector('#info').textContent = info;
     document.querySelector('#moreInfo').textContent = moreInfo;

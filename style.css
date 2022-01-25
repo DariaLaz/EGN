@@ -1,9 +1,13 @@
 *{
     font-family: 'Times new Roman';
-    font-size: 30px;
-    margin: 2%;
-    background-color: skyblue;
-    margin-top: 1px
+    font-size: 23px;
+    margin: 1%;
+    background-color: rgb(162, 215, 236);
+    margin-top: 0px;
+}
+h1{
+    margin-top: 36px;
+    font-size: 35px;
 }
 #index{
      margin-top: 15%;
@@ -15,7 +19,6 @@
     display: block;
     /* border-bottom: 1px solid white; */
     margin-top: 23px;
-    border-color: black;
 }
 button{
     background-color: rgb(22, 75, 96);
@@ -34,10 +37,24 @@ button{
 #moreInfo, #result, #info{
     font-style: italic;
 }
+#formation span, ul li {
+    margin: 0px 0px 0px 23px;
+}
 #formation span, ul li, h6{
     text-align: left;
     font-size: 20px;
     padding: 0%;
+}
+#backBut a{
+    padding: 16px;
+    border-radius: 15px;
+    background-color: rgb(22, 75, 96);
+    text-decoration: none;
+    color: white;
+    border-width: 2px;
+    border-style: outset;
+    cursor: pointer;
+    font-weight: bold;
 }
 #formation{
     border-bottom: 1px solid rgb(28, 164, 218);
@@ -51,8 +68,16 @@ button{
     margin-top: 10%;
     text-shadow: black;
 }
+section:nth-of-type(1), section:nth-of-type(1) span, h1, #input, #output, form, label, form div, #index a, h2, #moreInfo, #info{
+    background-color: skyblue;
+}
 section:nth-of-type(1){
+    box-shadow: 5px 5px 15px 5px #000000;
+    margin: 100px;
+    padding: 20px;
+    border-radius: 50px;
     text-align: center;
+    
 }
 div{
     display:block;
