@@ -45,17 +45,6 @@ button{
     font-size: 20px;
     padding: 0%;
 }
-#backBut a{
-    padding: 16px;
-    border-radius: 15px;
-    background-color: rgb(22, 75, 96);
-    text-decoration: none;
-    color: white;
-    border-width: 2px;
-    border-style: outset;
-    cursor: pointer;
-    font-weight: bold;
-}
 #formation{
     border-bottom: 1px solid rgb(28, 164, 218);
     border-left: 1px solid rgb(28, 164, 218);
@@ -68,6 +57,18 @@ button{
     margin-top: 10%;
     text-shadow: black;
 }
+#backBut a{
+    padding: 16px;
+    border-radius: 15px;
+    background-color: rgb(22, 75, 96);
+    text-decoration: none;
+    color: white;
+    border-width: 2px;
+    border-style: outset;
+    cursor: pointer;
+    font-weight: bold;
+}
+
 section:nth-of-type(1), section:nth-of-type(1) span, h1, #input, #output, form, label, form div, #index a, h2, #moreInfo, #info{
     background-color: skyblue;
 }
