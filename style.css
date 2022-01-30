@@ -2,7 +2,7 @@
     font-family: 'Times new Roman';
     font-size: 23px;
     margin: 1%;
-    background-color: rgb(162, 215, 236);
+    background-color: rgb(197, 221, 231);
     margin-top: 0px;
 }
 h1{
@@ -69,9 +69,14 @@ button{
     font-weight: bold;
 }
 
+.error {
+    border: 1px solid red;
+}
+
 section:nth-of-type(1), section:nth-of-type(1) span, h1, #input, #output, form, label, form div, #index a, h2, #moreInfo, #info{
     background-color: skyblue;
 }
+
 section:nth-of-type(1){
     box-shadow: 5px 5px 15px 5px #000000;
     margin: 100px;
@@ -86,4 +91,140 @@ div{
 select, input, option{
     background-color: snow;
     border-color: black;
+}
+/* 
+calendar */
+
+.ui-datepicker-trigger { 
+    max-height: 28px;
+}
+.ui-accordion .ui-accordion-icons {
+	padding-left: 2.2em;
+}
+.ui-accordion .ui-accordion-noicons {
+	padding-left: .7em;
+} 
+.ui-button,
+.ui-button:link,
+.ui-button:visited,
+.ui-button:hover,
+.ui-button:active {
+	text-decoration: none;
+}
+/* to make room for the icon, a width needs to be set here */
+.ui-button-icon-only {
+	width: 2.2em;
+}
+/* button elements seem to need a little more width */
+button.ui-button-icon-only {
+	width: 2.4em;
+}
+.ui-button-icons-only {
+	width: 3.4em;
+}
+button.ui-button-icons-only {
+	width: 3.7em;
+}
+
+/* button text element */
+.ui-button .ui-button-text {
+	display: block;
+	line-height: normal;
+    text-align: center;
+}
+.ui-button-text-only .ui-button-text {
+	padding: .4em 1em;
+}
+.ui-button-icon-only .ui-button-text,
+.ui-button-icons-only .ui-button-text {
+	padding: .4em;
+	text-indent: -9999999px;
+}
+.ui-button-text-icon-primary .ui-button-text,
+.ui-button-text-icons .ui-button-text {
+	padding: .4em 1em .4em 2.1em;
+}
+.ui-button-text-icon-secondary .ui-button-text,
+.ui-button-text-icons .ui-button-text {
+	padding: .4em 2.1em .4em 1em;
+}
+.ui-button-text-icons .ui-button-text {
+	padding-left: 2.1em;
+	padding-right: 2.1em;
+} 
+.ui-datepicker {
+	width: 17em;
+	padding: .2em .2em 0;
+	display: none;
+}
+.ui-datepicker .ui-datepicker-header {
+	position: relative;
+	padding: .2em 0;
+}
+.ui-datepicker .ui-datepicker-prev,
+.ui-datepicker .ui-datepicker-next {
+	position: absolute;
+	top: 2px;
+	width: 1.8em;
+	height: 1.8em;
+}
+
+.ui-datepicker .ui-datepicker-prev {
+	left: 2px;
+}
+.ui-datepicker .ui-datepicker-next {
+	right: 2px;
+}
+.ui-datepicker .ui-datepicker-prev-hover {
+	left: 1px;
+}
+.ui-datepicker .ui-datepicker-next-hover {
+	right: 1px;
+}
+
+.ui-datepicker table {
+	width: 100%;
+	font-size: .9em;
+	border-collapse: collapse;
+	margin: 0 0 .4em;
+}
+.ui-datepicker th {
+	padding: .7em .3em;
+	text-align: center;
+	font-weight: bold;
+	border: 0;
+}
+.ui-datepicker td {
+	border: 0;
+	padding: 1px;
+}
+.ui-datepicker td span,
+.ui-datepicker td a {
+	display: block;
+	padding: .2em;
+	text-align: right;
+	text-decoration: none;
+}
+.ui-widget {
+	font-family: Verdana,Arial,sans-serif;
+	font-size: 1.1em;
+}
+.ui-widget .ui-widget {
+	font-size: 1em;
+}
+.ui-widget input,
+.ui-widget select,
+.ui-widget textarea,
+.ui-widget button {
+	font-family: Verdana,Arial,sans-serif;
+	font-size: 1em;
+}
+.ui-widget-content a {
+	color: #222222;
+}
+.ui-widget-header a {
+	color: #222222;
+}
+.ui-datepicker-year, .ui-datepicker-month{
+    padding-left: 80px;;
 }

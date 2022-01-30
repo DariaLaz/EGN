@@ -1,66 +1,63 @@
 function generate(){
-    let year = document.querySelector('#year').value;
-    let month = (document.querySelector('#month').value);
-    let date = document.querySelector('#date').value;
-    let region = document.querySelector('#region').value;
-    let sex = document.querySelector('#sex').value;
+    let onClick = () => {
+        let birthDate = document.getElementsByTagName('input')[0].value;
+       
+        let [month, date, year] = birthDate.split('/');
+        let region = document.querySelector('#region').value;
+        let sex = document.querySelector('#sex').value;
+        let oddOrEven;
+        let [regNumFrom, regNumTo] = regionToNums(region)
 
-    let regNumFrom;
-    let regNumTo;
-    let oddOrEven;
+        if(Number(year) > 1999){
+           month = Number(month) + 40;
+        } else if(Number(year) < 1900){
+           month = Number(month) + 20;
+        }
 
-    if(year == '' || date == '' ){
-        document.querySelector('#output h2').textContent = `Всички полета трябва да бъдат попълнени!`;
-        document.querySelector('#result').textContent = ``;
+        if(sex == 'male'){
+           oddOrEven = 'нечетно';
+        } else{
+           oddOrEven = 'четно';
+        }
+
+        let egn = '';
+        egn = year[2] + year[3] + padLeadZeros(month, 2) + padLeadZeros(date, 2) + 'ABCD';
+
+        document.querySelector('#output h2').textContent = egn;
+        let info = `ABC -> ${oddOrEven} число в интервала [${padLeadZeros(regNumFrom, 3)}; ${padLeadZeros(regNumTo, 3)}]`;
+        let moreInfo = `D се изчислява по формулата: (${egn[0]}*2 + ${egn[1]}*4 + ${egn[2]}*8 + ${egn[3]}*5 + ${egn[4]}*10 + ${egn[5]}*9 + A*7 + B*3 + C*6) / 11`
+        document.querySelector('#info').textContent = info;
+        document.querySelector('#moreInfo').textContent = moreInfo;
     }
+    document.querySelector('button').addEventListener('click', onClick)
+}
 
-    if(sex == 'male'){
-        oddOrEven = 'нечетно';
-    } else{
-        oddOrEven = 'четно';
-    }
+function padLeadZeros(num, size) {
+    var res = num+"";
+    while (res.length < size) res = "0" + res;
+    return res;
+}
 
-    if(Number(year) < 1800 || Number(year) > 2099){
-        document.querySelector('#output h2').textContent = `Грешни данни!`;
-        document.querySelector('#result').textContent = `Годината трябва е между 1800 и 2099`;
-    } 
-    
-    switch(month){
-        case '1':
-        case '3':
-        case '5':
-        case '7':
-        case '8':
-        case '10':
-        case '12':
-            if(Number(date) > 31){
-                document.querySelector('#output h2').textContent = `Грешни данни!`;
-                document.querySelector('#result').textContent = `Невалидна дата на раждане. Този месец има 31 дена.`;
-                return;
-            }
-        break;
-        case '4':
-        case '6':
-        case '9':
-        case '11':
-            if(Number(date) > 30){
-                document.querySelector('#output h2').textContent = `Грешни данни!`;
-                document.querySelector('#result').textContent = `Невалидна дата на раждане. Този месец  има 30 дена.`;
-                return;
-            }
-        break;
-        case '2':
-            if((Number(year) % 4 == 0) && Number(date) > 29){
-                document.querySelector('#output h2').textContent = `Грешни данни!`;
-                document.querySelector('#result').textContent = `Невалидна дата на раждане. Месец февруари има 29 дена през ${year} година.`;
-                return;
-            } else if (Number(date) > 28){
-                document.querySelector('#output h2').textContent = `Грешни данни!`;
-                document.querySelector('#result').textContent = `Невалидна дата на раждане. Месец февруари има 28 дена през ${year} година.`;
-                return;
-            }
-            break;
+function validateDate() {
+    let birthDate = document.getElementsByTagName('input')[0];
+    let pattern = /\w+\/\w+\/\w+/;
+    const validator = (e) =>{
+        if(!pattern.test(birthDate.value)){
+            e.target.classList.add('error');
+            document.querySelector('#output h2').textContent = '';
+            document.querySelector('#info').textContent = 'Грешни данни';
+            document.querySelector('#moreInfo').textContent = '';
+        }
+        else{
+            e.target.classList.remove('error');
+        }
     }
+    birthDate.addEventListener('change', validator)
+}
+
+function regionToNums(region){
+    let regNumFrom = 0;
+    let regNumTo = 0;
     switch(region){
         case 'Благоевград':
             regNumFrom = 0;
@@ -179,20 +176,5 @@ function generate(){
             regNumTo = 999;
             break;
     }
-    let egn = '';
-    egn = year[2] + year[3] + padLeadZeros(month, 2) + padLeadZeros(date, 2) + 'ABCD';
-    
-    document.querySelector('#output h2').textContent = egn;
-    let info = `ABC -> ${oddOrEven} число в интервала [${padLeadZeros(regNumFrom, 3)}; ${padLeadZeros(regNumTo, 3)}]`;
-    let moreInfo = `D се изчислява по формулата: (${egn[0]}*2 + ${egn[1]}*4 + ${egn[2]}*8 + ${egn[3]}*5 + ${egn[4]}*10 + ${egn[5]}*9 + A*7 + B*3 + C*6) / 11`
-
-    document.querySelector('#info').textContent = info;
-    document.querySelector('#moreInfo').textContent = moreInfo;
-
-
-    function padLeadZeros(num, size) {
-        var res = num+"";
-        while (res.length < size) res = "0" + res;
-        return res;
-    }
+    return [regNumFrom, regNumTo];
 }

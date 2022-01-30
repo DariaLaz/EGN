@@ -7,9 +7,14 @@
     <link rel="stylesheet" href="./style.css">
 
     <title>Генерирай ЕГН</title>
+    <script type="text/javascript" 
+        src="http://code.jquery.com/jquery-1.7.2.min.js">
+    </script>
+    <script type="text/javascript" 
+        src="http://code.jquery.com/ui/1.10.4/jquery-ui.js">
+    </script>
 </head>
-<body>
-    
+<body onload="validateDate()">
     <section>
         <span id='backBut'>
             <a href="index.html">Назад</a>
@@ -18,62 +23,43 @@
         <span id='input'>
             <form>
                 <div>
-                    <label>Година на раждане:</label>
-                    <input type="text" id="year">
-                </div>
-                <div>
-                    <label>Meceц на раждане:</label>
-                    <select id="month">
-                    <option value="1">Януари</option>
-                    <option value="2">Февруари</option>
-                    <option value="3">Март</option>
-                    <option value="4">Април</option>
-                    <option value="5">Май</option>
-                    <option value="6">Юни</option>
-                    <option value="7">Юли</option>
-                    <option value="8">Август</option>
-                    <option value="9">Септември</option>
-                    <option value="10">Октомври</option>
-                    <option value="11">Ноември</option>
-                    <option value="12">Декември</option>
-                    </select>
-                </div>
-                <div>
                     <label>Дата на раждане:</label>
-                    <input type="text" id="date">
+                    <div class="input-group date">
+                        <input id="txtdate" type="text" class="form-control" >
+                    </div>
                 </div>
                 <div>
                     <label>Област:</label>
                     <select id="region">
                         <option value = "Благоевград">Благоевград</option>
-                        <option value = "Бургас">Бургас</ option >
-                        <option value = "Варна">Варна</ option >
-                        <option value = "Велико Търново">Велико Търново</ option >
-                        <option value = "Видин">Видин</ option >
-                        <option value = "Враца">Враца</ option >
-                        <option value = "Габрово">Габрово</ option >
-                        <option value = "Кърджали">Кърджали</ option >
-                        <option value = "Кюстендил">Кюстендил</ option >
-                        <option value = "Ловеч">Ловеч</ option >
-                        <option value = "Монтана">Монтана</ option >
-                        <option value = "Пазарджик">Пазарджик</ option >
-                        <option value = "Перник">Перник</ option >
-                        <option value = "Плевен">Плевен</ option >
-                        <option value = "Пловдив">Пловдив</ option >
-                        <option value = "Разград">Разград</ option >
-                        <option value = "Русе">Русе</ option >
-                        <option value = "Силистра">Силистра</ option >
-                        <option value = "Сливен">Сливен</ option >
-                        <option value = "Смолян">Смолян</ option >
-                        <option value = "София - град">София - град</ option >
-                        <option value = "София - окръг">София - окръг</ option >
-                        <option value = "Стара Загора">Стара Загора</ option >
-                        <option value = "Добрич">Добрич</ option >
-                        <option value = "Търговище">Търговище</ option >
-                        <option value = "Хасково">Хасково</ option >
-                        <option value = "Шумен">Шумен</ option >
-                        <option value = "Ямбол">Ямбол</ option >
-                        <option value = "Друг/Неизвестен">Друг/Неизвестен</ option >
+                        <option value = "Бургас">Бургас</option>
+                        <option value = "Варна">Варна</option>
+                        <option value = "Велико Търново">Велико Търново</option>
+                        <option value = "Видин">Видин</option >
+                        <option value = "Враца">Враца</option >
+                        <option value = "Габрово">Габрово</option >
+                        <option value = "Кърджали">Кърджали</option >
+                        <option value = "Кюстендил">Кюстендил</option >
+                        <option value = "Ловеч">Ловеч</option >
+                        <option value = "Монтана">Монтана</option >
+                        <option value = "Пазарджик">Пазарджик</option >
+                        <option value = "Перник">Перник</option >
+                        <option value = "Плевен">Плевен</option >
+                        <option value = "Пловдив">Пловдив</option >
+                        <option value = "Разград">Разград</option >
+                        <option value = "Русе">Русе</option >
+                        <option value = "Силистра">Силистра</option >
+                        <option value = "Сливен">Сливен</option >
+                        <option value = "Смолян">Смолян</option >
+                        <option value = "София - град">София - град</option >
+                        <option value = "София - окръг">София - окръг</option >
+                        <option value = "Стара Загора">Стара Загора</option >
+                        <option value = "Добрич">Добрич</option >
+                        <option value = "Търговище">Търговище</option >
+                        <option value = "Хасково">Хасково</option >
+                        <option value = "Шумен">Шумен</option >
+                        <option value = "Ямбол">Ямбол</option >
+                        <option value = "Друг/Неизвестен">Друг/Неизвестен</option >
                     </select>
                 </div>
                 <div>
@@ -84,7 +70,7 @@
                     </select>
                 </div>
             </form>
-            <button type="button" id="generateBut" onclick="generate()" class="bigBut">Генерирай</button>
+            <button type="button" id="generateBut" class="bigBut" >Генерирай</button>
         </span>
         <div id='output'>
             <h2></h2> <!--- Валидно; невалидно егн --->
@@ -116,6 +102,16 @@
             </ul>
         </div>
     </section>
+    <script language="javascript">
+        $(document).ready(function () {
+            $("#txtdate").datepicker({
+                showOn: "button",
+                buttonImage: "./icons8-calendar-48.png",    
+                buttonImageOnly: true
+            });
+        });
+    </script>
     <script src="./egnGen.js"></script>
+    <script> generate()</script>
 </body>
 </html>
