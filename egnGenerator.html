@@ -7,14 +7,8 @@
     <link rel="stylesheet" href="./style.css">
 
     <title>Генерирай ЕГН</title>
-    <script type="text/javascript" 
-        src="http://code.jquery.com/jquery-1.7.2.min.js">
-    </script>
-    <script type="text/javascript" 
-        src="http://code.jquery.com/ui/1.10.4/jquery-ui.js">
-    </script>
 </head>
-<body onload="validateDate()">
+<body >
     <section>
         <span id='backBut'>
             <a href="index.html">Назад</a>
@@ -23,9 +17,9 @@
         <span id='input'>
             <form>
                 <div>
-                    <label>Дата на раждане:</label>
+                    <label>Дата на раждане (въведете дата между 1800 и 2099 год):</label>
                     <div class="input-group date">
-                        <input id="txtdate" type="text" class="form-control" >
+                        <input id="date" placeholder="дд-мм-гггг" onchange="validator()">
                     </div>
                 </div>
                 <div>
@@ -59,7 +53,7 @@
                         <option value = "Хасково">Хасково</option >
                         <option value = "Шумен">Шумен</option >
                         <option value = "Ямбол">Ямбол</option >
-                        <option value = "Друг/Неизвестен">Друг/Неизвестен</option >
+                        <option value = "Друг/Неизвестен">Друг/Неизвестен</option>
                     </select>
                 </div>
                 <div>
@@ -102,15 +96,6 @@
             </ul>
         </div>
     </section>
-    <script language="javascript">
-        $(document).ready(function () {
-            $("#txtdate").datepicker({
-                showOn: "button",
-                buttonImage: "./icons8-calendar-48.png",    
-                buttonImageOnly: true
-            });
-        });
-    </script>
     <script src="./egnGen.js"></script>
     <script> generate()</script>
 </body>

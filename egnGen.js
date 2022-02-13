@@ -1,35 +1,53 @@
 function generate(){
     let onClick = () => {
-        let birthDate = document.getElementsByTagName('input')[0].value;
-       
-        let [month, date, year] = birthDate.split('/');
-        let region = document.querySelector('#region').value;
-        let sex = document.querySelector('#sex').value;
-        let oddOrEven;
-        let [regNumFrom, regNumTo] = regionToNums(region)
+        if(validator()){
+            let birthDate = document.getElementById('date');
+            let [month, date, year] = birthDate.value.split('-');
+            let region = document.querySelector('#region').value;
+            let sex = document.querySelector('#sex').value;
+            let oddOrEven;
+            let [regNumFrom, regNumTo] = regionToNums(region)
 
-        if(Number(year) > 1999){
-           month = Number(month) + 40;
-        } else if(Number(year) < 1900){
-           month = Number(month) + 20;
-        }
+            if(Number(year) > 1999){
+               month = Number(month) + 40;
+            } else if(Number(year) < 1900){
+               month = Number(month) + 20;
+            }
 
-        if(sex == 'male'){
-           oddOrEven = 'нечетно';
-        } else{
-           oddOrEven = 'четно';
-        }
+            if(sex == 'male'){
+               oddOrEven = 'нечетно';
+            } else{
+               oddOrEven = 'четно';
+            }
 
-        let egn = '';
-        egn = year[2] + year[3] + padLeadZeros(month, 2) + padLeadZeros(date, 2) + 'ABCD';
+            let egn = '';
+            egn = year[2] + year[3] + padLeadZeros(month, 2) + padLeadZeros(date, 2) + 'ABCD';
 
-        document.querySelector('#output h2').textContent = egn;
-        let info = `ABC -> ${oddOrEven} число в интервала [${padLeadZeros(regNumFrom, 3)}; ${padLeadZeros(regNumTo, 3)}]`;
-        let moreInfo = `D се изчислява по формулата: (${egn[0]}*2 + ${egn[1]}*4 + ${egn[2]}*8 + ${egn[3]}*5 + ${egn[4]}*10 + ${egn[5]}*9 + A*7 + B*3 + C*6) / 11`
-        document.querySelector('#info').textContent = info;
-        document.querySelector('#moreInfo').textContent = moreInfo;
+            document.querySelector('#output h2').textContent = egn;
+            let info = `ABC -> ${oddOrEven} число в интервала [${padLeadZeros(regNumFrom, 3)}; ${padLeadZeros(regNumTo, 3)}]`;
+            let moreInfo = `D се изчислява по формулата: (${egn[0]}*2 + ${egn[1]}*4 + ${egn[2]}*8 + ${egn[3]}*5 + ${egn[4]}*10 + ${egn[5]}*9 + A*7 + B*3 + C*6) / 11`
+            document.querySelector('#info').textContent = info;
+            document.querySelector('#moreInfo').textContent = moreInfo;
+        } 
     }
     document.querySelector('button').addEventListener('click', onClick)
+}
+function validator(){
+    let birthDate = document.getElementById('date');
+    let pattern = /[0-9]{1,2}-[0-9]{1,2}-[0-9]{4}/;
+    let [date, month, year] = birthDate.value.split('-');
+    let dateObj = new Date(Number(year), Number(month) - 1 , Number(date));
+    if(dateObj.getFullYear() == year && dateObj.getMonth() == Number(month) - 1 && dateObj.getDate() == date && pattern.test(birthDate.value) && year >= 1800 && year < 3000){
+        birthDate.classList.remove('error');
+        document.querySelector('#info').textContent = '';
+        return true;
+    } else{
+        birthDate.classList.add('error');
+        document.querySelector('#output h2').textContent = '';
+        document.querySelector('#info').textContent = 'Грешни данни';
+        document.querySelector('#moreInfo').textContent = '';
+        return false;
+    }
 }
 
 function padLeadZeros(num, size) {
@@ -38,22 +56,6 @@ function padLeadZeros(num, size) {
     return res;
 }
 
-function validateDate() {
-    let birthDate = document.getElementsByTagName('input')[0];
-    let pattern = /\w+\/\w+\/\w+/;
-    const validator = (e) =>{
-        if(!pattern.test(birthDate.value)){
-            e.target.classList.add('error');
-            document.querySelector('#output h2').textContent = '';
-            document.querySelector('#info').textContent = 'Грешни данни';
-            document.querySelector('#moreInfo').textContent = '';
-        }
-        else{
-            e.target.classList.remove('error');
-        }
-    }
-    birthDate.addEventListener('change', validator)
-}
 
 function regionToNums(region){
     let regNumFrom = 0;
